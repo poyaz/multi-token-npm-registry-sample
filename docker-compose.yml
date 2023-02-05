@@ -1,0 +1,21 @@
+version: "2.3"
+services:
+
+  registry:
+    image: verdaccio/verdaccio:5
+    network_mode: "bridge"
+    restart: "no"
+
+  app:
+    image: node:16.17.0-alpine3.16
+    volumes:
+      - $PWD/app:/app
+    working_dir: /app
+    environment:
+      - NPM_DEFAULT_PASSWORD=${NPM_DEFAULT_PASSWORD}
+      - NPM_REGISTRY_ADDR=http://registry:4873
+    command: "node index.js"
+    links:
+      - registry
+    network_mode: "bridge"
+    restart: "no"
