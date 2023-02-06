@@ -333,6 +333,8 @@ async function *userAsyncGenerator() {
     }
 
     console.log('DONE');
+
+    setInterval(() => {}, 6000);
   } catch (error) {
     console.error('ERR', error);
 
