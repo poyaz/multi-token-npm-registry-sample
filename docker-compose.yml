@@ -1,6 +1,5 @@
 version: "2.3"
 services:
-
   registry:
     image: verdaccio/verdaccio:5
     network_mode: "bridge"
